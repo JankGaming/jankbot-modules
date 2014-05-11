@@ -1,0 +1,7 @@
+{
+  "name": "Wiki",
+  "author": "JankDota",
+  "main": "wiki.js",
+  "license": "MIT",
+  "description": "Keep a database of information in Jankbot"
+}

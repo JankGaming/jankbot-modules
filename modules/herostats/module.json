@@ -1,0 +1,7 @@
+{
+  "name": "Hero Stats",
+  "author": "JankDota",
+  "main": "herostats.js",
+  "license": "MIT",
+  "description": "Look up hero attributes from herostats.io"
+}

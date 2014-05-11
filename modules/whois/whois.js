@@ -1,4 +1,5 @@
-var friends = require("./friends");
+var friends = require("../../core/friends");
+var logger = require('../../core/logger.js');
 
 // Thanks to Dokkat for this function
 // http://codereview.stackexchange.com/users/19757/dokkat
@@ -16,26 +17,32 @@ exports.canHandle = function(input) {
 
 // Use fuzzy match to find the user and grab their profile link.
 // TODO: Return more user information.
-exports.handle = function(input, source, bot) {
+exports.handle = function(input, source) {
   var lookup = input.split(" ");
   lookup.splice(0, 1);
   lookup = lookup.join(" ");
 
-  var friendID = friends.idOf(lookup, true);
+  var friendsList = friends.getAllFriends();
+  for (var friend in friendsList) {
+    var thisFriend = friendsList[friend].name;
 
-  if (friendID) {
-    var profileURL = "http://steamcommunity.com/profiles/" + friendID;
-    var friendInfo = "Who is " + friends.nameOf(friendID) + ": \n" +
-    "Steam profile: " + profileURL + "\n";
-    friends.messageUser(source, friendInfo, bot);
-    return;
+    // If this fuzzily matched, get info.
+    if (fuzzyMatch(thisFriend.toLowerCase(), lookup.toLowerCase())) {
+      var foundFriend = friendsList[friend];
+      var profileURL = "http://steamcommunity.com/profiles/" + friend;
+
+      var friendInfo = "Who is " + foundFriend.name + ": \n" +
+      "Steam profile: " + profileURL + "\n";
+      friends.messageUser(source, friendInfo);
+      return;
+    }
   }
-
 
   // No friend found :(
   friends.messageUser(source, "I couldn't find any user I know with a name similar to '" +
     lookup + "'. Sorry :(", bot);
 }
+
 
 exports.getHelp = function() {
   return "WHOIS\n" +

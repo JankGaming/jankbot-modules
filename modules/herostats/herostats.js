@@ -1,5 +1,6 @@
-var friends = require("./friends");
-var request = require("../node_modules/request");
+var friends = require("../../core/friends");
+var logger = require('../../core/logger.js');
+var request = require("request");
 var API_URL = "http://dotaheroes.herokuapp.com/heroes/";
 
 exports.canHandle = function(input) {
@@ -9,20 +10,20 @@ exports.canHandle = function(input) {
   }
 }
 
-exports.handle = function(input, source, bot) {
+exports.handle = function(input, source) {
   var input = input.split(" ");
   if (input[1] == "help") {
-    getFields(source, bot);
+    getFields(source);
   } else {
     var stat = input[1];
     input.splice(0, 2);
     var hero = input.join(" ");
     hero = toTitleCase(hero);
-    heroLookup(hero, stat, source, bot);
+    heroLookup(hero, stat, source);
   }
 }
 
-function heroLookup(hero, stat, source, bot) {
+function heroLookup(hero, stat, source) {
 // Get the json for this hero.
 request({uri: API_URL + hero},
   function(err, resp, body) {
@@ -33,6 +34,12 @@ request({uri: API_URL + hero},
       // Parse the response.
       body = body.toLowerCase();
       var lowerStat = stat.toLowerCase();
+
+      // Aliases.
+      if (lowerStat == "ms") {
+        lowerStat = "movespeed";
+      }
+
       var stats = JSON.parse(body);
 
       // Get the specific stat.
@@ -46,9 +53,9 @@ request({uri: API_URL + hero},
 
       // If this stat exists, send the info back. Else, error.
       if (lookedUpStat != undefined) {
-        friends.messageUser(source, stat + " for " + hero + " is " + lookedUpStat, bot);
+        friends.messageUser(source, stat + " for " + hero + " is " + lookedUpStat);
       } else {
-        friends.messageUser(source, "Couldn't look up " + stat + " for " + hero, bot);
+        friends.messageUser(source, "Couldn't look up " + stat + " for " + hero);
       }
     } else {
       // Couldn't lookup.
@@ -58,7 +65,7 @@ request({uri: API_URL + hero},
   });
 }
 
-function getFields(source, bot) {
+function getFields(source) {
   request({uri: API_URL + "Earthshaker"},
     function(err, resp, body) {
 
@@ -71,7 +78,7 @@ function getFields(source, bot) {
 
       fields += "To look up a field, chat 'herostats STAT HERONAME'.";
 
-      friends.messageUser(source, fields, bot);
+      friends.messageUser(source, fields);
     }
 
   });

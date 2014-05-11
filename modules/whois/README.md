@@ -1,10 +1,7 @@
 #HeroStats module for JankBot
 By JankDota
 
-To use this module, copy whois.js into Jankbot's bot_modules/ directory,
-then add it by running 'node config module add' and follow the instructions.
-
-When prompted for the module name, type 'whois' and hit enter.
+To use this module, copy this directory into Jankbot's bot_modules/ directory.
 
 Once the module is installed, you will be able to ask Jankbot to look up
 Steam users he is friends with using fuzzy search. This means you do not need

@@ -1,0 +1,7 @@
+{
+  "name": "Mumble",
+  "author": "JankDota",
+  "main": "mumble.js",
+  "license": "MIT",
+  "description": "Check the status of mumble from Jankbot"
+}

@@ -1,12 +1,12 @@
 var fs = require('fs');
-var friends = require('./friends.js');
-var logger = require('./logger.js');
+var friends = require("../../core/friends");
+var logger = require('../../core/logger.js');
 
 var quotes = [];
 
 // if we've saved a quotes list, use it
-if (fs.existsSync('quoteslist')) {
-  quotes = JSON.parse(fs.readFileSync('quoteslist'));
+if (fs.existsSync('./bot_modules/quotes/quoteslist')) {
+  quotes = JSON.parse(fs.readFileSync('./bot_modules/quotes/quoteslist'));
 }
 
 
@@ -29,19 +29,23 @@ function getQuotes() {
 
 
 // Handler.
-exports.handle = function(input, source, bot) {
+exports.handle = function(input, source) {
   input = input.split(" ");
   if (input.length > 2 && input[1].toLowerCase() == "add") {
     input.splice(0, 2);
     var quote = input.join(" ");
     quotes.push(quote);
-    friends.messageUser(source, "Saved quote.", bot);
+    friends.messageUser(source, "Saved quote.");
   }
   else if (input.length > 1 && input[1].toLowerCase() == "list") {
-    friends.messageUser(source, "Here are quotes I have saved:\n" + getQuotes(), bot);
+    friends.messageUser(source, "Here are quotes I have saved:\n" + getQuotes());
   }
   else if (input.length > 1 && input[1].toLowerCase() == "random") {
-    friends.messageUser(source, quotes[Math.floor(Math.random() * quotes.length)], bot);
+    if (quotes.length > 0) {
+      friends.messageUser(source, quotes[Math.floor(Math.random() * quotes.length)]);
+    } else {
+      friends.messageUser(source, "I haven't stored any quotes yet!");
+    }
   }
   exports.save();
 }

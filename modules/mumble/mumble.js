@@ -1,21 +1,24 @@
 var request = require('request');
-var friends = require('./friends.js');
+var friends = require("../../core/friends");
+var logger = require('../../core/logger.js');
 var fs = require('fs');
 
 var mumbleApi = "";
-if (fs.existsSync('mumbleinfo')) {
-  mumbleApi = fs.readFileSync('mumbleinfo', 'utf8');
+if (fs.existsSync('./bot_modules/mumble/mumbleinfo')) {
+  mumbleApi = fs.readFileSync('./bot_modules/mumble/mumbleinfo', 'utf8');
+} else {
+  logger.error('Mumble config not found!');
 }
 
 
 // Handler.
-exports.handle = function(input, source, bot) {
+exports.handle = function(input, source) {
   input = input.split(" ");
   request(mumbleApi, function (err, resp, body) {
     if (!err && resp.statusCode == 200) {
       var mumbleInfo = JSON.parse(body);
       var message = "Here is the current status of mumble:\n" + getUserList(mumbleInfo.root);
-      friends.messageUser(source, message, bot);
+      friends.messageUser(source, message);
     }
   });
 }

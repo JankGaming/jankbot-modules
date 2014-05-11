@@ -1,0 +1,7 @@
+{
+  "name": "twitter",
+  "author": "JankDota",
+  "main": "twitter.js",
+  "license": "MIT",
+  "description": "Tweet things right from jankbot"
+}
