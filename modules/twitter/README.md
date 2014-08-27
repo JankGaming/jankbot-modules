@@ -1,4 +1,4 @@
-#Mumble module for Jankbot
+#Twitter module for Jankbot
 By JankDota
 
 To use this module, copy this directory into Jankbot's bot_modules/ directory.
