@@ -1,4 +1,4 @@
-#HeroStats module for JankBot
+#WHOIS module for JankBot
 By JankDota
 
 To use this module, copy this directory into Jankbot's bot_modules/ directory.
