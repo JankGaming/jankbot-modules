@@ -14,20 +14,17 @@ if (fs.existsSync('./bot_modules/mumble/mumbleinfo')) {
 // Handler.
 exports.handle = function(input, source) {
   input = input.split(" ");
-  request(mumbleApi, function (err, resp, body) {
-    if (!err && resp.statusCode == 200) {
-      var mumbleInfo = JSON.parse(body);
-      var message = "Here is the current status of mumble:\n" + getUserList(mumbleInfo.root);
-      friends.messageUser(source, message);
-    }
-  });
-}
+  if (input[0] == "mumble") {
+    request(mumbleApi, function (err, resp, body) {
+      if (!err && resp.statusCode == 200) {
+        var mumbleInfo = JSON.parse(body);
+        var message = "Here is the current status of mumble:\n" + getUserList(mumbleInfo.root);
+        friends.messageUser(source, message);
+      }
+    });
 
-
-// Can handle function.
-exports.canHandle = function(original) {
-  var input = original.toLowerCase().split(" ");
-  return input[0] == "mumble";
+    return true;
+  }
 }
 
 

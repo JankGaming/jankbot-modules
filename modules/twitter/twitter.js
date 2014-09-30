@@ -56,18 +56,7 @@ exports.handle = function(input, source) {
         friends.messageUser(source, "Tweeted!");
       });
     }
-  }
-}
 
-
-/*
- * Jankbot will pass this function the input from the user.
- * Returns true if, after parsing the given input, you know your module is the
- * target of the command.
- */
-exports.canHandle = function(input) {
-  input = input.split(" ");
-  if (input[0] == "tweet") {
     return true;
   }
 }
@@ -91,6 +80,7 @@ exports.onExit = function() {
  * module command2 - Description of this command
  */
 exports.getHelp = function() {
-  return "TWITTER\n" +
-  "tweet MESSAGE - Tweets the given message";
+  return "MODULE NAME\n" +
+  "module command - Description of this command\n" +
+  "module command2 - Description of this command\n";
 }

@@ -31,30 +31,26 @@ function getQuotes() {
 // Handler.
 exports.handle = function(input, source) {
   input = input.split(" ");
-  if (input.length > 2 && input[1].toLowerCase() == "add") {
-    input.splice(0, 2);
-    var quote = input.join(" ");
-    quotes.push(quote);
-    friends.messageUser(source, "Saved quote.");
-  }
-  else if (input.length > 1 && input[1].toLowerCase() == "list") {
-    friends.messageUser(source, "Here are quotes I have saved:\n" + getQuotes());
-  }
-  else if (input.length > 1 && input[1].toLowerCase() == "random") {
-    if (quotes.length > 0) {
-      friends.messageUser(source, quotes[Math.floor(Math.random() * quotes.length)]);
-    } else {
-      friends.messageUser(source, "I haven't stored any quotes yet!");
+  if (input[0] == "quote") {
+    if (input.length > 2 && input[1].toLowerCase() == "add") {
+      input.splice(0, 2);
+      var quote = input.join(" ");
+      quotes.push(quote);
+      friends.messageUser(source, "Saved quote.");
     }
+    else if (input.length > 1 && input[1].toLowerCase() == "list") {
+      friends.messageUser(source, "Here are quotes I have saved:\n" + getQuotes());
+    }
+    else if (input.length > 1 && input[1].toLowerCase() == "random") {
+      if (quotes.length > 0) {
+        friends.messageUser(source, quotes[Math.floor(Math.random() * quotes.length)]);
+      } else {
+        friends.messageUser(source, "I haven't stored any quotes yet!");
+      }
+    }
+    exports.save();
+    return true;
   }
-  exports.save();
-}
-
-
-// Can handle function.
-exports.canHandle = function(original) {
-  var input = original.toLowerCase().split(" ");
-  return input[0] == "quote";
 }
 
 

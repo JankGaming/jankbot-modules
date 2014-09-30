@@ -24,46 +24,51 @@ exports.canHandle = function(input) {
 
 exports.handle = function(input, source) {
   var commands = input.split(" ");
-  if (commands.length < 2) {
-    friends.messageUser(source, exports.getHelp());
-    return;
-  }
+  
+  if (commands[0] == "wiki") {
+    if (commands.length < 2) {
+      friends.messageUser(source, exports.getHelp());
+      return true;
+    }
 
-  switch (commands[1]) {
-    case "new" :
-      createEntry(commands, source);
-      break;
-    case "create" :
-      createEntry(commands, source);
-      break;
-    case "delete":
-      deleteEntry(commands, source);
-      break;
-    case "append":
-      appendEntry(commands, source);
-      break;
-    case "edit":
-      editEntry(commands, source);
-      break;
-    case "permission":
-      handlePermissions(commands, source);
-      break;
-    case "random":
-      giveRandomEntry(source);
-      break;
-    case "list":
-      listEntries(source);
-      break;
-    case "lastedit":
-      findLastEdit(commands, source);
-      break;
-    default:
-      // Search for an entry.
-      commands.splice(0, 1);
-      var search = commands.join(" ");
-      var lookup = new WikiEntry(search, source);
-      friends.messageUser(source, lookup.formatEntry());
-      break;
+    switch (commands[1]) {
+      case "new" :
+        createEntry(commands, source);
+        break;
+      case "create" :
+        createEntry(commands, source);
+        break;
+      case "delete":
+        deleteEntry(commands, source);
+        break;
+      case "append":
+        appendEntry(commands, source);
+        break;
+      case "edit":
+        editEntry(commands, source);
+        break;
+      case "permission":
+        handlePermissions(commands, source);
+        break;
+      case "random":
+        giveRandomEntry(source);
+        break;
+      case "list":
+        listEntries(source);
+        break;
+      case "lastedit":
+        findLastEdit(commands, source);
+        break;
+      default:
+        // Search for an entry.
+        commands.splice(0, 1);
+        var search = commands.join(" ");
+        var lookup = new WikiEntry(search, source);
+        friends.messageUser(source, lookup.formatEntry());
+        break;
+    }
+
+    return true;
   }
 }
 

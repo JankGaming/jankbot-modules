@@ -8,39 +8,35 @@ function fuzzyMatch(str,pattern){
     return (new RegExp(pattern)).test(str);
 };
 
-
-// Grab the input if this is a whois search.
-exports.canHandle = function(input) {
-  input = input.split(" ");
-  return input[0] == "whois";
-}
-
 // Use fuzzy match to find the user and grab their profile link.
 // TODO: Return more user information.
 exports.handle = function(input, source) {
   var lookup = input.split(" ");
-  lookup.splice(0, 1);
-  lookup = lookup.join(" ");
+  if (lookup[0] == "whois") {
+    lookup.splice(0, 1);
+    lookup = lookup.join(" ");
 
-  var friendsList = friends.getAllFriends();
-  for (var friend in friendsList) {
-    var thisFriend = friendsList[friend].name;
+    var friendsList = friends.getAllFriends();
+    for (var friend in friendsList) {
+      var thisFriend = friendsList[friend].name;
 
-    // If this fuzzily matched, get info.
-    if (fuzzyMatch(thisFriend.toLowerCase(), lookup.toLowerCase())) {
-      var foundFriend = friendsList[friend];
-      var profileURL = "http://steamcommunity.com/profiles/" + friend;
+      // If this fuzzily matched, get info.
+      if (fuzzyMatch(thisFriend.toLowerCase(), lookup.toLowerCase())) {
+        var foundFriend = friendsList[friend];
+        var profileURL = "http://steamcommunity.com/profiles/" + friend;
 
-      var friendInfo = "Who is " + foundFriend.name + ": \n" +
-      "Steam profile: " + profileURL + "\n";
-      friends.messageUser(source, friendInfo);
-      return;
+        var friendInfo = "Who is " + foundFriend.name + ": \n" +
+        "Steam profile: " + profileURL + "\n";
+        friends.messageUser(source, friendInfo);
+        return true;
+      }
     }
-  }
 
-  // No friend found :(
-  friends.messageUser(source, "I couldn't find any user I know with a name similar to '" +
-    lookup + "'. Sorry :(", bot);
+    // No friend found :(
+    friends.messageUser(source, "I couldn't find any user I know with a name similar to '" +
+      lookup + "'. Sorry :(", bot);
+    return true;
+  }
 }
 
 

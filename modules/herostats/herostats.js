@@ -3,23 +3,20 @@ var logger = require('../../core/logger.js');
 var request = require("request");
 var API_URL = "http://dotaheroes.herokuapp.com/heroes/";
 
-exports.canHandle = function(input) {
-  var text = input.split(" ");
-  if (text[0] == "herostats" || text[0] == "hs") {
-    return true;
-  }
-}
-
 exports.handle = function(input, source) {
   var input = input.split(" ");
-  if (input[1] == "help") {
-    getFields(source);
-  } else {
-    var stat = input[1];
-    input.splice(0, 2);
-    var hero = input.join(" ");
-    hero = toTitleCase(hero);
-    heroLookup(hero, stat, source);
+  if (input[0] == "herostats" || input[0] == "hs") {
+    if (input[1] == "help") {
+      getFields(source);
+    } else {
+      var stat = input[1];
+      input.splice(0, 2);
+      var hero = input.join(" ");
+      hero = toTitleCase(hero);
+      heroLookup(hero, stat, source);
+    }
+
+    return true;
   }
 }
 
