@@ -34,7 +34,7 @@ exports.handle = function(input, source) {
 
     // No friend found :(
     friends.messageUser(source, "I couldn't find any user I know with a name similar to '" +
-      lookup + "'. Sorry :(", bot);
+      lookup + "'. Sorry :(");
     return true;
   }
 }
