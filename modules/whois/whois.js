@@ -12,7 +12,7 @@ function fuzzyMatch(str,pattern){
 // TODO: Return more user information.
 exports.handle = function(input, source) {
   var lookup = input.split(" ");
-  if (lookup[0] == "whois") {
+  if (lookup[0] === "whois" && typeof input[1] === "string") {
     lookup.splice(0, 1);
     lookup = lookup.join(" ");
 
