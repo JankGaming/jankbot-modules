@@ -6,7 +6,7 @@ var API_URL = "http://dotaheroes.herokuapp.com/heroes/";
 exports.handle = function(input, source) {
   var input = input.split(" ");
   if (input[0] == "herostats" || input[0] == "hs") {
-    if (input[1] == "help") {
+    if (input[1] == "help" || typeof input[1] !== 'string') {
       getFields(source);
     } else {
       var stat = input[1];
