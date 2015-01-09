@@ -18,3 +18,7 @@ whatever you like!
 in place of `coin`
 
 `coin add AMOUNT RECIPIENT` adds to the balance of the recipient
+
+`coin reset` resets all coin balances to the baseline
+
+`coin default AMOUNT` sets the baseline balance to AMOUNT
