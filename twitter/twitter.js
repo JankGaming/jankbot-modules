@@ -10,29 +10,10 @@ var T = new Twit({
   , access_token_secret:  config.access_token_secret
 });
 
-
-
-
-/*
- * jankbotModuleTemplate.js
- * Free and open as a starting point for Jankbot modules.
- * For more help, contact twiterghost@jankdota.com or tweet @JankDota.
- * Jankbot is written in NodeJS and requires version 0.10.0 or above.
- * http://nodejs.org
- */
-
 // Import Jankbot API modules.
 var friends = require("../../core/friends");
 var logger = require('../../core/logger.js');
 
-
-/*
- * Jankbot will pass the full input, the ID of the user who sent it and the
- * Steam bot instance (used for messaging and other utilities).
- * This function should handle discerning the intended outcome of the command
- * and executing the functionality, responding to the user if necessary using
- * friends.messageUser() or friends.broadcast().
- */
 exports.handle = function(input, source) {
   var tweetConfig = config;
   input = input.split(" ");
@@ -61,15 +42,8 @@ exports.handle = function(input, source) {
   }
 }
 
-
-/*
- * Jankbot will call this function when closing. This function should handle any
- * tasks for a graceful close. If nothing needs to be done, declare this
- * function and leave it blank.
- */
 exports.onExit = function() {
 }
-
 
 /*
  * Jankbot will call this function when a user has requested help text. Your
