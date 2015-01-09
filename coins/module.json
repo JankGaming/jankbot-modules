@@ -1,0 +1,7 @@
+{
+  "name": "Jank Coins",
+  "author": "JankDota",
+  "main": "coins.js",
+  "license": "MIT",
+  "description": "Add a point value economy to Jankbot"
+}
