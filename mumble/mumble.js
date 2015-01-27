@@ -3,6 +3,8 @@ var friends = require("../../core/friends");
 var logger = require('../../core/logger.js');
 var fs = require('fs');
 
+exports.compatible = '2.0.*';
+
 var mumbleApi = "";
 if (fs.existsSync('./bot_modules/mumble/mumbleinfo')) {
   mumbleApi = fs.readFileSync('./bot_modules/mumble/mumbleinfo', 'utf8');

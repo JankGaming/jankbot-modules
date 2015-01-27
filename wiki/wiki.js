@@ -3,6 +3,8 @@ var logger = require('../../core/logger.js');
 var fs = require("fs");
 var config = JSON.parse(fs.readFileSync("config.json"));
 
+exports.compatible = '2.0.*';
+
 if (fs.existsSync("./bot_modules/wiki/wikiData")) {
   var wiki = JSON.parse(fs.readFileSync("./bot_modules/wiki/wikiData"));
 } else {
@@ -24,7 +26,7 @@ exports.canHandle = function(input) {
 
 exports.handle = function(input, source) {
   var commands = input.split(" ");
-  
+
   if (commands[0] == "wiki") {
     if (commands.length < 2) {
       friends.messageUser(source, exports.getHelp());

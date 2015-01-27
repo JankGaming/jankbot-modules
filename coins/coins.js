@@ -4,6 +4,8 @@ var fs = require('fs');
 var _ = require('lodash');
 var config = require('./coins.json');
 
+exports.compatible = '2.0.*';
+
 var commands = [
   'balance',
   'give',
@@ -14,7 +16,7 @@ var commands = [
 ];
 
 exports.handle = function(input, source) {
-  var input = input.split(" ");
+  var input = input.split(' ');
   var command = input[1];
 
   if (input[0].toLowerCase() === config.name.toLowerCase()) {
@@ -167,8 +169,11 @@ function transferCoins(from, to, amount) {
   // Send confirmation messages.
   friends.messageUser(from, 'Successfully sent ' + amount + ' ' + config.name +
     '(s) to ' + toName + '.');
-  friends.messageUser(toId, fromName + ' sent you ' + amount + ' ' +
-    config.name + '(s).');
+
+  if (!friends.getMute(toId)) {
+    friends.messageUser(toId, fromName + ' sent you ' + amount + ' ' +
+      config.name + '(s).');
+  }
 
 }
 

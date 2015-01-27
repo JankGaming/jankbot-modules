@@ -1,7 +1,0 @@
-{
-  "name": "Whois",
-  "author": "JankDota",
-  "main": "whois.js",
-  "license": "MIT",
-  "description": "Look up players with a fuzzy search"
-}

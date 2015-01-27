@@ -1,6 +1,8 @@
 var Twit = require('twit');
 var fs = require("fs");
 
+exports.compatible = '2.0.*';
+
 var config = require('./tweet.json');
 
 var T = new Twit({

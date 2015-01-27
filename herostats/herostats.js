@@ -3,6 +3,8 @@ var logger = require('../../core/logger.js');
 var request = require("request");
 var API_URL = "http://dotaheroes.herokuapp.com/heroes/";
 
+exports.compatible = '2.0.*';
+
 exports.handle = function(input, source) {
   var input = input.split(" ");
   if (input[0] == "herostats" || input[0] == "hs") {

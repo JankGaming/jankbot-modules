@@ -2,6 +2,8 @@ var fs = require('fs');
 var friends = require("../../core/friends");
 var logger = require('../../core/logger.js');
 
+exports.compatible = '2.0.*';
+
 var quotes = [];
 
 // if we've saved a quotes list, use it
