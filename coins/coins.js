@@ -120,14 +120,14 @@ function transferCoins(from, to, amount) {
   amount = parseInt(amount);
 
   // Ensure that it is a number.
-  if (amount === undefined || isNaN(amount)) {
+  if (amount === undefined || isNaN(amount) || !isFinite(amount)) {
     friends.messageUser(from, 'Invalid send amount.');
     return;
   }
 
   // Ensure the amount is a positive integer.
   if (amount < 1) {
-    friends.messageUser(from, 'Don\'t be that guy.');
+    friends.messageUser(from, 'Cannot send less than 1 ' + config.name + 's');
     return;
   }
 
@@ -170,6 +170,7 @@ function transferCoins(from, to, amount) {
   friends.messageUser(from, 'Successfully sent ' + amount + ' ' + config.name +
     '(s) to ' + toName + '.');
 
+  // Don't message the user if they are muted to avoid coin spam.
   if (!friends.getMute(toId)) {
     friends.messageUser(toId, fromName + ' sent you ' + amount + ' ' +
       config.name + '(s).');
@@ -193,6 +194,10 @@ function getBalance(user) {
   if (balance === undefined) {
     setBalanceToDefault(user);
     balance = friends.get(user, 'coins');
+  }
+  var intBalance = parseInt(balance);
+  if (intBalance === undefined || !isFinite(intBalance)) {
+    intBalance = 0;
   }
   return parseInt(balance);
 }
