@@ -47,16 +47,3 @@ exports.handle = function(input, source) {
 exports.onExit = function() {
 }
 
-/*
- * Jankbot will call this function when a user has requested help text. Your
- * module should return a well-formatted help section. Example:
- *
- * MODULE NAME
- * module command - Description of this command
- * module command2 - Description of this command
- */
-exports.getHelp = function() {
-  return "MODULE NAME\n" +
-  "module command - Description of this command\n" +
-  "module command2 - Description of this command\n";
-}
