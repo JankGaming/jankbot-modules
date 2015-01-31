@@ -13,3 +13,10 @@ key by logging in to [twitter's dev site](http://dev.twitter.com) and making
 a new application. Paste your consumer and access tokens into `tweet.json`, and
 put whatever steam IDs you want to allow to tweet in the `allowed` array in
 the `tweet.json` file.
+
+## Commands
+
+This module will not list commands in the help section, as they are private to the list of steam
+IDs defined in `tweet.json`.
+
+`tweet [SOME MESSAGE]` will tweet the given message
