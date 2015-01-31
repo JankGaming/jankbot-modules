@@ -21,4 +21,4 @@ a permission in order to use this module beyond reading.
 By default, the any admin can give permissions by using the command: 
 `wiki permission give PERMISSION_LEVEL USERNAME`
 
-You can revoke permissions by using `wiki permission revoe PERMISSION_LEVEL USERNAME`
+You can revoke permissions by using `wiki permission revoke PERMISSION_LEVEL USERNAME`
