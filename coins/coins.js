@@ -25,7 +25,9 @@ exports.handle = function(input, source) {
 
       switch (command) {
         case 'reset':
-          resetCoins();
+          if (friends.isAdmin(source)) {
+            resetCoins();
+          }
           break;
         case 'balance':
           checkBalance(source);
@@ -51,9 +53,11 @@ exports.handle = function(input, source) {
             input[2]);
           break;
         case 'add':
-          var amount = input[2];
-          var to = input.slice(3).join(' ');
-          addCoins(source, to, amount);
+          if (friends.isAdmin(source)) {
+            var amount = input[2];
+            var to = input.slice(3).join(' ');
+            addCoins(source, to, amount);
+          }
           break;
         default:
           break;
