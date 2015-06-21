@@ -121,17 +121,11 @@ function addCoins(source, to, amount) {
 
 function transferCoins(from, to, amount) {
 
-  amount = parseInt(amount);
+  amount = parseInt(amount, 10);
 
   // Ensure that it is a number.
-  if (amount === undefined || isNaN(amount) || !isFinite(amount)) {
-    friends.messageUser(from, 'Invalid send amount.');
-    return;
-  }
-
-  // Ensure the amount is a positive integer.
-  if (amount < 1) {
-    friends.messageUser(from, 'Cannot send less than 1 ' + config.name + 's');
+  if (isNaN(amount) || amount < 1) {
+    friends.messageUser(from, 'Must send at least 1 ' + config.name);
     return;
   }
 
@@ -144,7 +138,7 @@ function transferCoins(from, to, amount) {
     return;
   }
 
-  // 'To' start as a name fragment, do a fuzzy search to resolve it if possible.
+  // 'To' starts as a name fragment, do a fuzzy search to resolve it if possible.
   var toId = friends.idOf(to, true);
 
   // Be sure we can find that user and it isn't the sender.
@@ -153,7 +147,7 @@ function transferCoins(from, to, amount) {
       to + '"');
     return;
   } else if (toId === from) {
-    friends.messageUser(from, 'Stop trying to transfer to yourself.');
+    friends.messageUser(from, 'You cannot transfer to yourself.');
     return;
   }
 
@@ -194,16 +188,21 @@ function checkBalance(user) {
 }
 
 function getBalance(user) {
-  var balance = friends.get(user, 'coins');
-  if (balance === undefined) {
+
+  // Grab the raw balance from the user data.
+  var balance = getBalanceInt(user);
+
+  // If the balance is anything but a parseable int, reset it.
+  if (isNaN(balance)) {
     setBalanceToDefault(user);
-    balance = friends.get(user, 'coins');
+    balance = getBalanceInt(user);
   }
-  var intBalance = parseInt(balance);
-  if (intBalance === undefined || !isFinite(intBalance)) {
-    intBalance = 0;
-  }
-  return parseInt(balance);
+
+  return balance;
+}
+
+function getBalanceInt(user) {
+  return parseInt(friends.get(user, 'coins'), 10);
 }
 
 function save() {
