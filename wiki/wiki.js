@@ -338,7 +338,7 @@ exports.getHelp = function() {
   "wiki edit ARTICLE_TITLE: NEW CONTENT - Updates the article specified by " +
   "ARTICLE_TITLE with the given new content. Note the colon\n" +
   "wiki append ARTICLE_TITLE: CONTENT - Appends the given content to the given article\n" +
-  "wiki new ARTICLE_TITLE: NEW CONTENT - Creates an article with the given title and content." +
+  "wiki new ARTICLE_TITLE: NEW CONTENT - Creates an article with the given title and content.\n" +
   "wiki delete ARTICLE_TITLE - Deletes the article with the given title\n" +
   "wiki list - Lists the articles in the wiki\n" +
   "wiki random - Gives a random wiki article\n";
