@@ -6,7 +6,17 @@ party and community developed Jankbot modules, ready to go.
 
 ## Installing Modules
 
-To install a module for Jankbot, move the entire directory for the module you wish to install
+As of Jankbot 2.1.0, modules can be installed via `npm`.
+
+To install a module, just do `npm install jankbot-MODULENAME` in the root level Jankbot directory.
+
+Currently, the following JankDota Jankbot modules can be installed from npm:
+
+* `jankbot-quotes`
+
+Others soon to follow.
+
+To install a legacy module for Jankbot, move the entire directory for the module you wish to install
 into the `bot_modules` directory in your Jankbot. The next time you run Jankbot, it will be
 discovered at startup and loaded up into Jankbot.
 
