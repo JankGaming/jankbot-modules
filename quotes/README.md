@@ -1,11 +1,10 @@
-#Quotes module for JankBot
+#Quotes module for Jankbot
 By JankDota
 
-To use this module, copy this directory into Jankbot's `bot_modules/` directory.
+## Installation
+In your Jankbot home directory, `npm install jankbot-quotes`
 
-This module is designed to keep a running quote list for your community. Please
-note that if Jankbot does not shut down properly, quotes added recently may be
-lost.
+This module is designed to keep a running quote list for your community.
 
 ## Commands
 

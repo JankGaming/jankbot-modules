@@ -2,33 +2,27 @@ var fs = require('fs');
 var friends = require("../../core/friends");
 var logger = require('../../core/logger.js');
 
-exports.compatible = '2.0.*';
-
 var quotes = [];
 
 // if we've saved a quotes list, use it
-if (fs.existsSync('./bot_modules/quotes/quoteslist')) {
-  quotes = JSON.parse(fs.readFileSync('./bot_modules/quotes/quoteslist'));
+if (fs.existsSync("./data/quotes.json")) {
+  quotes = JSON.parse(fs.readFileSync("./data/quotes.json"));
 }
-
 
 // Saves quotes.
 exports.save = function() {
-  fs.writeFileSync("quoteslist", JSON.stringify(quotes));
+  fs.writeFileSync("./data/quotes.json", JSON.stringify(quotes));
 }
-
 
 // Helper function to add a quote.
 function addQuote(quote) {
   quotes.push(quote);
 }
 
-
 // Helper function to get all quotes.
 function getQuotes() {
   return quotes.join("\n");
 }
-
 
 // Handler.
 exports.handle = function(input, source) {
@@ -38,6 +32,7 @@ exports.handle = function(input, source) {
       input.splice(0, 2);
       var quote = input.join(" ");
       quotes.push(quote);
+      exports.save();
       friends.messageUser(source, "Saved quote.");
     }
     else if (input.length > 1 && input[1].toLowerCase() == "list") {
@@ -55,11 +50,9 @@ exports.handle = function(input, source) {
   }
 }
 
-
 exports.onExit = function() {
   exports.save();
 }
-
 
 exports.getHelp = function() {
   return "QUOTES\n" +

@@ -3,5 +3,6 @@
   "author": "JankDota",
   "main": "quotes.js",
   "license": "MIT",
-  "description": "Save quotes from your community"
+  "description": "Save quotes from your community",
+  "compatible": "2.1.*"
 }
