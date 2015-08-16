@@ -1,4 +1,4 @@
-#Quotes module for Jankbot
+# Quotes module for Jankbot
 By JankDota
 
 ## Installation
