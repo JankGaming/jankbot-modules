@@ -1,0 +1,25 @@
+{
+  "name": "jankbot-herostats",
+  "version": "1.0.0",
+  "description": "Look up hero attributes through Jankbot",
+  "main": "herostats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JankGaming/jankbot-modules"
+  },
+  "keywords": [
+    "jankbot"
+  ],
+  "author": "Michael Barrett <twisterghost@gmail.com> (http://hellote.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JankGaming/jankbot-modules/issues"
+  },
+  "homepage": "https://github.com/JankGaming/jankbot-modules",
+  "dependencies": {
+    "request": "2.16.6"
+  }
+}
