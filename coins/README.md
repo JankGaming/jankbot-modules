@@ -1,7 +1,5 @@
-#Coins module for Jankbot
+# Coins module for Jankbot
 By JankDota
-
-To use this module, copy this directory into Jankbot's bot_modules/ directory.
 
 Once installed, Jankbot will have a currency! You can even name the currency
 whatever you like!
