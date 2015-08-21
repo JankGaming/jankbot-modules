@@ -2,9 +2,16 @@ var friends = require("../../core/friends");
 var logger = require('../../core/logger');
 var fs = require('fs');
 var _ = require('lodash');
-var config = require('./coins.json');
 
-exports.compatible = '2.0.*';
+var config;
+if (fs.existsSync('./data/coins.json')) {
+  config = JSON.parse(fs.readFileSync('./data/coins.json'));
+} else {
+  config = {
+    name: 'coin',
+    default: 200
+  }
+}
 
 var commands = [
   'balance',
@@ -206,5 +213,5 @@ function getBalanceInt(user) {
 }
 
 function save() {
-  fs.writeFileSync('./bot_modules/coins/coins.json', JSON.stringify(config));
+  fs.writeFileSync('./data/coins.json', JSON.stringify(config));
 }

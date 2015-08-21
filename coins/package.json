@@ -1,0 +1,22 @@
+{
+  "name": "jankbot-coins",
+  "version": "1.0.0",
+  "description": "Add virtual currency to your Jankbot",
+  "main": "coins.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JankGaming/jankbot-modules"
+  },
+  "keywords": [
+    "jankbot"
+  ],
+  "author": "Michael Barrett <twisterghost@gmail.com> (http://hellote.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JankGaming/jankbot-modules/issues"
+  },
+  "homepage": "https://github.com/JankGaming/jankbot-modules"
+}

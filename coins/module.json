@@ -3,5 +3,6 @@
   "author": "JankDota",
   "main": "coins.js",
   "license": "MIT",
-  "description": "Add a point value economy to Jankbot"
+  "description": "Add a point value economy to Jankbot",
+  "compatible": "2.1.*"
 }
