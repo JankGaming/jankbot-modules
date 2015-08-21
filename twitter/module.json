@@ -3,5 +3,6 @@
   "author": "JankDota",
   "main": "twitter.js",
   "license": "MIT",
-  "description": "Tweet things right from jankbot"
+  "description": "Tweet things right from jankbot",
+  "compatible": "2.1.*"
 }
