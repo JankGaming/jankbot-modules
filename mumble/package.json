@@ -1,0 +1,22 @@
+{
+  "name": "jankbot-mumble",
+  "version": "1.0.0",
+  "description": "Check your mumble server status in Jankbot",
+  "main": "mumble.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JankGaming/jankbot-modules"
+  },
+  "keywords": [
+    "jankbot"
+  ],
+  "author": "Michael Barrett <twisterghost@gmail.com> (http://hellote.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JankGaming/jankbot-modules/issues"
+  },
+  "homepage": "https://github.com/JankGaming/jankbot-modules"
+}
