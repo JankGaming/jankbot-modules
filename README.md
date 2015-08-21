@@ -1,25 +1,19 @@
 Jankbot Module Collection
 ===============
 
-This repo serves as the main collection of centralized Jankbot modules. Here you will find 1st 
-party and community developed Jankbot modules, ready to go.
+This repository contains modules created and maintained by JankDota. All of the modules in this repository are built to work with the latest version of [Jankbot](https://github.com/twisterghost/jankbot)
 
 ## Installing Modules
 
-As of Jankbot 2.1.0, modules can be installed via `npm`.
+`npm insall jankbot-MODULENAME`
 
-To install a module, just do `npm install jankbot-MODULENAME` in the root level Jankbot directory. All of the modules in this repository can be installed via npm. To see a list of all Jankbot modules available for install via npm, [search "Jankbot" on npmjs.com](https://www.npmjs.com/search?q=jankbot)
+Where `MODULENAME` is the module you wish to install. Example: `npm install jankbot-quotes`
 
-To install a legacy module for Jankbot, move the entire directory for the module you wish to install
+To see a list of all Jankbot modules available for install via npm, [search "Jankbot" on npmjs.com](https://www.npmjs.com/search?q=jankbot)
+
+Jankbot can install modules via npm starting with Jankbot version 2.1.0. To install a legacy module for Jankbot, or to install a module into an older verion of Jankbot, move the entire directory for the module you wish to install
 into the `bot_modules` directory in your Jankbot. The next time you run Jankbot, it will be
 discovered at startup and loaded up into Jankbot.
-
-## Submitting Your Modules
-
-If you are a developer who wants to submit a Jankbot module of your own creation, make a pull
-request to this repo with the module you want to add. A repo maintainer will review the module
-and merge the pull request if its up to snuff! You can also feel free to make pull requests which
-modify or improve existing modules in the repo.
 
 ## License
 
