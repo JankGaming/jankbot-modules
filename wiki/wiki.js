@@ -1,27 +1,18 @@
 var friends = require("../../core/friends");
 var logger = require('../../core/logger.js');
 var fs = require("fs");
-var config = JSON.parse(fs.readFileSync("config.json"));
+var config = require('../../data/config.json');
 
 exports.compatible = '2.0.*';
 
-if (fs.existsSync("./bot_modules/wiki/wikiData")) {
-  var wiki = JSON.parse(fs.readFileSync("./bot_modules/wiki/wikiData"));
+if (fs.existsSync("./data/wikiData")) {
+  var wiki = JSON.parse(fs.readFileSync("./data/wikiData"));
 } else {
   var wiki = [];
 }
 
 String.prototype.replaceAll = function(str1, str2, ignore) {
   return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-}
-
-
-if (fs.existsSync("wiki")) {
-  wiki =  fs.loadFileSync("wiki");
-}
-
-exports.canHandle = function(input) {
-  return input.split(" ")[0] == "wiki";
 }
 
 exports.handle = function(input, source) {
@@ -277,7 +268,7 @@ function hasPermission(source, permission) {
 }
 
 function handlePermissions(commands, source) {
-  if (config.admins.indexOf(source) == -1 && !friends.get(source, "wiki-giveperms")) {
+  if (!friends.isAdmin(source) && !friends.get(source, "wiki-giveperms")) {
     friends.messageUser(source, "You don't have permission to give permissions.\n" +
       "How 'bout dem apples?");
     return;
@@ -382,7 +373,6 @@ WikiEntry.prototype.isNew = function() {
 
 WikiEntry.prototype.save = function() {
   if (this.isNew()) {
-    console.log("NEW");
     wiki.push(this);
   } else {
     var copy = getEntry(this.title);
@@ -396,11 +386,11 @@ WikiEntry.prototype.save = function() {
 }
 
 function saveWiki() {
-  fs.writeFileSync("./bot_modules/wiki/wikiData", JSON.stringify(wiki));
-  if (!fs.existsSync("./bot_modules/wiki/wikiBackup")) {
-    fs.mkdirSync("./bot_modules/wiki/wikiBackup");
+  fs.writeFileSync("./data/wikiData", JSON.stringify(wiki));
+  if (!fs.existsSync("./data/wikiBackup")) {
+    fs.mkdirSync("./data/wikiBackup");
   }
-  fs.writeFileSync("./bot_modules/wiki/wikiBackup/" + "wiki-" + timestampSeconds(), JSON.stringify(wiki));
+  fs.writeFileSync("./data/wikiBackup/" + "wiki-" + timestampSeconds(), JSON.stringify(wiki));
 }
 
 function entryExists(title) {

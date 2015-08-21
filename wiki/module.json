@@ -3,5 +3,6 @@
   "author": "JankDota",
   "main": "wiki.js",
   "license": "MIT",
-  "description": "Keep a database of information in Jankbot"
+  "description": "Keep a database of information in Jankbot",
+  "compatible": "2.1.*"
 }

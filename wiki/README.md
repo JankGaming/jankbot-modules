@@ -1,7 +1,5 @@
-#Wiki module for JankBot
+# Wiki module for JankBot
 By JankDota
-
-To use this module, copy this directory into Jankbot's bot_modules/ directory.
 
 Once installed, this module lets Jankbot maintain a proprietary wiki of info.
 
