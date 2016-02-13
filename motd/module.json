@@ -1,0 +1,8 @@
+{
+  "name": "Motd",
+  "author": "beatyt",
+  "main": "motd.js",
+  "license": "MIT",
+  "description": "Get/Set the message of the day",
+  "compatible": "2.1.*"
+}
