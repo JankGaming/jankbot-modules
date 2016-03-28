@@ -1,6 +1,6 @@
 {
   "name": "jankbot-wiki",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add a wiki managed by Jankbot",
   "main": "wiki.js",
   "scripts": {

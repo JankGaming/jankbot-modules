@@ -1,6 +1,6 @@
 {
   "name": "jankbot-twitter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tweet from your Jankbot",
   "main": "twitter.js",
   "scripts": {

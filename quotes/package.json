@@ -1,6 +1,6 @@
 {
   "name": "jankbot-quotes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Save quotes through Jankbot",
   "main": "quotes.js",
   "scripts": {

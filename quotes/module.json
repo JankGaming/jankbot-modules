@@ -4,5 +4,5 @@
   "main": "quotes.js",
   "license": "MIT",
   "description": "Save quotes from your community",
-  "compatible": "2.1.*"
+  "compatible": "3.*.*"
 }

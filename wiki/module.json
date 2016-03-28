@@ -4,5 +4,5 @@
   "main": "wiki.js",
   "license": "MIT",
   "description": "Keep a database of information in Jankbot",
-  "compatible": "2.1.*"
+  "compatible": "3.*.*"
 }

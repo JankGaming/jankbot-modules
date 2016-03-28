@@ -4,5 +4,5 @@
   "main": "mumble.js",
   "license": "MIT",
   "description": "Check the status of mumble from Jankbot",
-  "compatible": "2.1.*"
+  "compatible": "3.*.*"
 }

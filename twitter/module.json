@@ -4,5 +4,5 @@
   "main": "twitter.js",
   "license": "MIT",
   "description": "Tweet things right from jankbot",
-  "compatible": "2.1.*"
+  "compatible": "3.*.*"
 }

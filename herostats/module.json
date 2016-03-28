@@ -4,5 +4,5 @@
   "main": "herostats.js",
   "license": "MIT",
   "description": "Look up hero attributes from herostats.io",
-  "compatible": "2.1.*"
+  "compatible": "3.*.*"
 }
